@@ -1,0 +1,9 @@
+<h1>Додати фото</h1>
+<button routerLink=""> Пропустити </button>
+<form (submit)="AddPhotoSubmit()">
+  <div class="form-group">
+<label> Upload photo </label>
+<input type="file" name="avatar" (change)="onFileChange($event)" />
+</div>
+<input type="submit" value="submit" class="btn btn-success">
+</form>
