@@ -4,18 +4,21 @@
     <div>
     <div class="dog_name">
 
-        <p>Name: {{list.hotdog.name}}</p>
+        <p>Name: {{list.name}}</p>
 
     </div>
     <div class="dog_discription">
-        <p>Description</p>
-        <p>{{list.hotdog.description}}</p>
+        <p>Description:</p>
+      <br>
+        <p>{{list.description}}</p>
     </div>
-    <button [routerLink]="['/editHotDog/'+ list.hotdog.id]">Edit</button>
-    <button (click)="DeleteHotDog(list.hotdog.id)">Delete</button>
     </div>
     <div class="photo">
       <img [src]="[host+list.path]" alt="" width="100%" height="100%">
+    </div>
+    <div class="button">
+      <button [routerLink]="['/editHotDog/'+ list.id]">Edit</button>
+      <button (click)="DeleteHotDog(list.id)">Delete</button>
     </div>
   </div>
 

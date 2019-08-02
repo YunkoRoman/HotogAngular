@@ -8,11 +8,11 @@ import {Response} from "../../interfaces/Response";
   templateUrl: './add-new-hot-dog.component.html',
   styleUrls: ['./add-new-hot-dog.component.css']
 })
+//Створення нового Хот Дога
 export class AddNewHotDogComponent implements OnInit {
   id: number;
   name: string;
   description: string;
-  selectedFile:File = null;
 
   constructor( private router: Router,
                private route: ActivatedRoute,
@@ -22,19 +22,14 @@ export class AddNewHotDogComponent implements OnInit {
 
   ngOnInit() {
   }
-  // onFileChange(event){
-  //   console.log(event.target.files[0]);
-  //   this.selectedFile = <File>event.target.files[0];
-  //   console.log(this.selectedFile);
-  // };
+
   createHotDogSubmit() {
-   //  const fd = new FormData();
-   // fd.append('photo', this.selectedFile, this.selectedFile.name);
 
     this.HotDogServisService.CreateHodDog(this.name, this.description).subscribe((data:Response) => {
       this.id = data.msg.id;
-      console.log(this.id);
+
       if (data.success == true) this.router.navigate(['photo/'+ this.id])
+
     })
   }
 

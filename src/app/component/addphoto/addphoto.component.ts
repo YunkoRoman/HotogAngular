@@ -1,3 +1,5 @@
+// ТУТ ВІДБУВАЄТЬСЯ ЗАГРЗКА ФОТО.
+
 import { Component, OnInit } from '@angular/core';
 import {HotDogServisService} from "../../services/hot-dog-servis.service";
 import {Response} from "../../interfaces/Response";

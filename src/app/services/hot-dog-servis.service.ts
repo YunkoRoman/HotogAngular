@@ -12,21 +12,21 @@ export class HotDogServisService {
   }
 
   GetHodDog() {
-    return this.http.get('http://localhost:3000/HotDog')
+    return this.http.get('http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/HotDog')
   };
   CreateHodDog(name, description) {
-    return this.http.post('http://localhost:3000/HotDog',{name, description} )
+    return this.http.post('http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/HotDog',{name, description} )
   };
   AddPhoto(id,fd) {
-    return this.http.post('http://localhost:3000/HotDog/photo/' + id, fd)
+    return this.http.put('http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/HotDog/photo/'+ id, fd  )
   }
   UpdateHodDog(name, description, id) {
-    return this.http.put('http://localhost:3000/HotDog/'+ id, {name, description})
+    return this.http.put('http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/HotDog/'+ id, {name, description})
   };
   OneHodDog(id) {
-    return this.http.get('http://localhost:3000/HotDog/' + id)
+    return this.http.get('http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/HotDog/' + id)
   };
   DeleteHodDog(id) {
-    return this.http.delete('http://localhost:3000/HotDog/' + id)
+    return this.http.delete('http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/HotDog/' + id, )
   }
 }

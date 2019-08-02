@@ -9,6 +9,7 @@ import {Response} from "../../interfaces/Response";
   templateUrl: './edit-hot-dog.component.html',
   styleUrls: ['./edit-hot-dog.component.css']
 })
+//Редагування Хот Дога
 export class EditHotDogComponent implements OnInit {
   name: string;
   description: string;
@@ -21,7 +22,6 @@ export class EditHotDogComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.HotDogServisService.OneHodDog(this.id).subscribe((data:Response)=> {
-      console.log(data.msg);
       this.name = data.msg.name;
       this.description = data.msg.description
     })
@@ -29,7 +29,7 @@ export class EditHotDogComponent implements OnInit {
 
   onEditSubmit() {
     this.HotDogServisService.UpdateHodDog(this.name, this.description, this.id).subscribe((data:Response) => {
-      if (data.success == true) this.router.navigate(['']);
+      if (data.success == true) this.router.navigate(['photo/'+ this.id])
     })
   }
 }

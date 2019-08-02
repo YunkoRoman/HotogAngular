@@ -1,7 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import {HotDogServisService} from "../../services/hot-dog-servis.service";
 import {Response} from "../../interfaces/Response";
-import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -9,17 +8,15 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './all-hot-dog.component.html',
   styleUrls: ['./all-hot-dog.component.css']
 })
+//Виводить всі дані з бази
 export class AllHotDogComponent implements OnInit, DoCheck {
   lists: any = [];
-  host:string= 'http://localhost:3000/';
+  host:string= 'http://ec2-18-222-176-127.us-east-2.compute.amazonaws.com:3000/';
 
-  constructor(public HotDogServisService: HotDogServisService,
-              private router: Router,
-              private route: ActivatedRoute,) { }
+  constructor(public HotDogServisService: HotDogServisService) { }
 
   ngOnInit() {
     this.HotDogServisService.GetHodDog().subscribe((data:Response) => {
-      console.log(data.msg);
       this.lists = data.msg;
 
     })
@@ -29,9 +26,7 @@ export class AllHotDogComponent implements OnInit, DoCheck {
    const value = this.lists.map(obj => {return obj.id});
     const index = value.indexOf(id);
     this.lists.splice(index,1);
-    this.HotDogServisService.DeleteHodDog(id).subscribe((data: Response) => {
-      console.log(data.msg);
-    });
+    this.HotDogServisService.DeleteHodDog(id);
 
   }
 
